@@ -11,16 +11,26 @@ function nestedTarget(target){
 
 function increaseRankBy(n){
   let number = parseInt(n);
-  const element = document.querySelectorAll('.ranked-list')
-  let i;
-    for (i = 0; i < element.length; i++) {
-      return element * number;
+  const elements = document.querySelectorAll('.ranked-list')
+    for (let i = 0; i < elements.length; i++) {
+      let children = elements[i].children
+      for (let j = 0; j < children.length; j++){
+       children[j].innerHTML =  parseInt(children[j].innerHTML) + number
+
+      }
     }
 }
 
 function deepestChild(){
-  const element = document.querySelectorAll('div#grand-node')
-  
+  const element = document.getElementById('grand-node').querySelector('div')
+
+  let child = element.children[0]
+  let next;
+    while (child){
+      next = child
+      child = next.children[0]
+    }
+    return next
 }
 
 
